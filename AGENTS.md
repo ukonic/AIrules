@@ -1,9 +1,9 @@
 # Clash Verge Rev 扩展脚本维护规范
 
-## 本对话的维护范围
+## 脚本维护范围
 
-- 本对话负责 `ClashVergeRev-AI.js` 及相关使用说明和维护规范。动手前先阅读现有脚本和 README，在现有实现上完成需求。
-- `.list` 文件和 `AI-Supplement.yaml` 由用户在另一个对话维护。此脚本通过远程 URL 使用 `AI-Supplement.yaml`。Quantumult X 和第三方规则仓库也不属于本对话的维护范围。
+- 本规范适用于 `ClashVergeRev-AI.js` 及其相关文档。修改前先阅读现有脚本和 README，在现有实现上完成需求。
+- 仅维护脚本时，改动限于脚本及相关文档。仓库中的 `.list` 与 `AI-Supplement.yaml` 按各自的规则维护需求独立更新。脚本通过远程 URL 引用 `AI-Supplement.yaml`。
 - 保留 `main(config, profileName)` 入口。使用客户端支持的 JavaScript，规则下载由 Mihomo 的 `rule-providers` 完成。
 
 ## 配置约定
