@@ -1,9 +1,9 @@
-# AIrules 维护规范
+# Clash Verge Rev 扩展脚本维护规范
 
-## 项目范围
+## 本对话的维护范围
 
-- 本仓库只维护 Clash Verge Rev 的 JavaScript 订阅扩展脚本。动手前先阅读现有脚本和 README，在现有实现上完成需求。
-- 日常改动限于 `ClashVergeRev-AI.js`、`README.md` 和 `AGENTS.md`。保留现有 `.list` 文件和 `AI-Supplement.yaml`，后者仅在用户明确要求时修改。Quantumult X 和第三方规则仓库不在维护范围内。
+- 本对话负责 `ClashVergeRev-AI.js` 及相关使用说明和维护规范。动手前先阅读现有脚本和 README，在现有实现上完成需求。
+- `.list` 文件和 `AI-Supplement.yaml` 由用户在另一个对话维护。此脚本通过远程 URL 使用 `AI-Supplement.yaml`。Quantumult X 和第三方规则仓库也不属于本对话的维护范围。
 - 保留 `main(config, profileName)` 入口。使用客户端支持的 JavaScript，规则下载由 Mihomo 的 `rule-providers` 完成。
 
 ## 配置约定
