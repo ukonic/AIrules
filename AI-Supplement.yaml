@@ -1,0 +1,6 @@
+payload:
+  - 'DOMAIN-SUFFIX,oaistatsig.com'
+  - 'DOMAIN-SUFFIX,claude.com'
+  - 'DOMAIN-SUFFIX,claudeusercontent.com'
+  - 'DOMAIN,aistudio.google.com'
+  - 'DOMAIN,cloudcode-pa.googleapis.com'
