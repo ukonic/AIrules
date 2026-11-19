@@ -11,3 +11,8 @@ HOST-SUFFIX,claudeusercontent.com,AI专用
 # Gemini
 HOST,aistudio.google.com,AI专用
 HOST,cloudcode-pa.googleapis.com,AI专用
+
+# Muse
+HOST-SUFFIX,muse.ai,AI专用
+HOST,hatch-api.meta.ai,AI专用
+HOST,graph.meta.ai,AI专用
