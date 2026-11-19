@@ -17,6 +17,7 @@ HOST,cloudcode-pa.googleapis.com,AI专用
 HOST-SUFFIX,muse.ai,AI专用
 HOST,hatch-api.meta.ai,AI专用
 HOST,graph.meta.ai,AI专用
+HOST,hatch.metaaivm.com,AI专用
 
 # Grok
 HOST-SUFFIX,grok.com,AI专用

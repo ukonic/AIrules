@@ -8,5 +8,6 @@ payload:
   - 'DOMAIN-SUFFIX,muse.ai'
   - 'DOMAIN,hatch-api.meta.ai'
   - 'DOMAIN,graph.meta.ai'
+  - 'DOMAIN,hatch.metaaivm.com'
   - 'DOMAIN-SUFFIX,grok.com'
   - 'DOMAIN-SUFFIX,x.ai'
