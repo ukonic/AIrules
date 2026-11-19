@@ -1,6 +1,6 @@
 # Clash Verge Rev AI 分流
 
-`ClashVergeRev-AI.js` 是用于 Clash Verge Rev（Mihomo 内核）的订阅扩展脚本。它优先匹配五份 AI 规则，将命中的连接交给美国节点测速组。
+`ClashVergeRev-AI.js` 是用于 Clash Verge Rev（Mihomo 内核）的订阅扩展脚本。它优先匹配五份 AI 规则，将命中的连接交给手动选择的美国节点。
 
 [打开脚本的 GitHub Raw 地址](https://raw.githubusercontent.com/ukonic/AIrules/main/ClashVergeRev-AI.js)
 
@@ -9,16 +9,18 @@
 1. 在 Clash Verge Rev 的「订阅」页导入并选中机场订阅。
 2. 右键目标订阅，打开「编辑扩展脚本」或「扩展脚本」，粘贴 Raw 页面中的完整脚本并保存。要应用到所有订阅，可粘贴到「全局扩展脚本」。
 3. 刷新或重新选中该订阅。切换到「规则」模式，在「代理」页确认出现 `🤖 AI` 和 `🇺🇸 美国节点`。
-4. 展开美国节点组检查候选列表；规则提供者的下载状态可在规则页或内核日志中查看。
+4. 在「代理」页展开 `🇺🇸 美国节点`，点选要使用的节点。规则提供者的下载状态可在规则页或内核日志中查看。
 
 ## 分流架构
 
 | 策略组 | 类型 | 内容 |
 | --- | --- | --- |
 | `🤖 AI` | `select` | 唯一选项为 `🇺🇸 美国节点` |
-| `🇺🇸 美国节点` | `url-test` | 按节点名称筛选美国节点，使用 `https://www.gstatic.com/generate_204` 测速，间隔 300 秒，容差 50 ms，`lazy: true` |
+| `🇺🇸 美国节点` | `select` | 按名称筛选美国节点，由用户手动切换 |
 
 Mihomo 从订阅内联节点和 `proxy-providers` 中筛选候选，订阅刷新或代理提供者更新后可识别新节点。筛选识别美国旗帜、常见中英文地名及独立的 `US`、`USA` 缩写，也支持 `US01` 等编号形式。流量、剩余、到期、官网、订阅等提示会被排除。名称用于筛选候选，实际出口地区取决于机场节点。
+
+美国节点组已关闭自动测速。首次使用或原选节点被订阅移除时，Mihomo 默认使用候选列表的第一项，更新订阅后可在「代理」页确认当前节点。
 
 美国节点组为空时，`empty-fallback: REJECT` 会拒绝匹配的 AI 流量。请使用支持该字段的 Mihomo 内核，本机验证版本为 v1.19.33。
 
@@ -36,4 +38,4 @@ Mihomo 从订阅内联节点和 `proxy-providers` 中筛选候选，订阅刷新
 
 规则提供者使用 `AIrules-` 前缀，遇到不同内容的同名提供者时会选用带编号的名称。脚本会在原位置更新两个同名策略组，并保留原有 DNS、节点、其他策略组、规则提供者及其他规则的相对顺序。若代理节点或代理提供者占用了这两个策略组名称，脚本会报错，避免输出有命名冲突的配置。
 
-参考 [Clash Verge Rev 自定义脚本文档](https://www.clashverge.dev/guide/script.html)、[Mihomo 代理组通用字段](https://wiki.metacubex.one/config/proxy-groups/)、[Mihomo url-test](https://wiki.metacubex.one/config/proxy-groups/url-test/)和 [Mihomo rule-providers](https://wiki.metacubex.one/config/rule-providers/)。
+参考 [Clash Verge Rev 自定义脚本文档](https://www.clashverge.dev/guide/script.html)、[Mihomo 代理组通用字段](https://wiki.metacubex.one/config/proxy-groups/)、[Mihomo select](https://wiki.metacubex.one/config/proxy-groups/select/)和 [Mihomo rule-providers](https://wiki.metacubex.one/config/rule-providers/)。

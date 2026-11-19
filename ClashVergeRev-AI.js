@@ -6,13 +6,6 @@ const US_NODE_FILTER =
 const NOTICE_FILTER =
   "(?i)流量|剩余|剩餘|到期|过期|過期|有效期|官网|官網|网址|網址|订阅|訂閱|续费|續費|套餐|重置|客服|群组|群組|公告|(^|[^a-z0-9])(?:traffic|remaining|expir(?:e[sd]?|y|ation)|official[ _-]+(?:site|website)|subscription|data[ _-]+left|bandwidth[ _-]+left)(?=$|[^a-z0-9])";
 
-const US_HEALTH_CHECK = {
-  url: "https://www.gstatic.com/generate_204",
-  interval: 300,
-  tolerance: 50,
-  lazy: true,
-};
-
 const RULE_INTERVAL = 86400;
 const RULE_PREFIX = "AIrules-";
 const UPSTREAM = "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash";
@@ -25,15 +18,15 @@ const AI_RULE_SOURCES = {
 };
 
 function updateProxyGroups(config) {
-  const usGroup = Object.assign({
+  const usGroup = {
     name: US_GROUP,
-    type: "url-test",
+    type: "select",
     "include-all": true,
     filter: US_NODE_FILTER,
     "exclude-filter": NOTICE_FILTER,
     "exclude-type": "Direct|Compatible|Dns|Reject|RejectDrop|Pass|PassRule",
     "empty-fallback": "REJECT",
-  }, US_HEALTH_CHECK);
+  };
   const managedGroups = new Map([
     [AI_GROUP, { name: AI_GROUP, type: "select", proxies: [US_GROUP] }],
     [US_GROUP, usGroup],
