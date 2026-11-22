@@ -8,8 +8,22 @@
 
 1. 在 Clash Verge Rev 的「订阅」页导入并选中机场订阅。
 2. 右键目标订阅，打开「编辑扩展脚本」或「扩展脚本」，粘贴 Raw 页面中的完整脚本并保存。要应用到所有订阅，可粘贴到「全局扩展脚本」。
-3. 刷新或重新选中该订阅。切换到「规则」模式，在「代理」页确认列表开头依次显示 `🤖 AI` 和 `🇺🇸 美国节点`。
+3. 刷新或重新选中该订阅。切换到「规则」模式，在「代理」页查看策略组。默认开头依次显示 `🤖 AI` 和 `🇺🇸 美国节点`。
 4. 在「代理」页展开 `🇺🇸 美国节点`，点选要使用的节点。规则提供者的下载状态可在规则页或内核日志中查看。
+
+## 手动调整策略组顺序
+
+在扩展脚本顶部编辑 `PROXY_GROUP_ORDER`，从上到下填写完整组名，包含表情和空格。比如把订阅里的「🔰 手动选择」移到两个 AI 组前面：
+
+```javascript
+const PROXY_GROUP_ORDER = [
+  "🔰 手动选择",
+  AI_GROUP,
+  US_GROUP,
+];
+```
+
+可以填写全部组名，也可以只列出想排在前面的组。未列出的组按原有相对顺序排在后面。订阅中没有的组名会跳过，重复填写时以首次出现的位置为准。保存脚本后重新选中订阅。
 
 ## 分流架构
 
@@ -36,6 +50,6 @@ Mihomo 从订阅内联节点和 `proxy-providers` 中筛选候选，订阅刷新
 | Gemini | [blackmatrix7 / Gemini.yaml](https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml) |
 | AI-Supplement | [ukonic / AI-Supplement.yaml](https://raw.githubusercontent.com/ukonic/AIrules/main/AI-Supplement.yaml) |
 
-规则提供者使用 `AIrules-` 前缀，遇到不同内容的同名提供者时会选用带编号的名称。脚本将两个 AI 相关策略组放在列表最前面，其余策略组保持原有顺序。若代理节点或代理提供者占用了这两个策略组名称，脚本会报错，避免输出有命名冲突的配置。
+规则提供者使用 `AIrules-` 前缀，遇到不同内容的同名提供者时会选用带编号的名称。若代理节点或代理提供者占用了两个 AI 策略组的名称，脚本会报错，避免输出有命名冲突的配置。
 
 参考 [Clash Verge Rev 自定义脚本文档](https://www.clashverge.dev/guide/script.html)、[Mihomo 代理组通用字段](https://wiki.metacubex.one/config/proxy-groups/)、[Mihomo select](https://wiki.metacubex.one/config/proxy-groups/select/)和 [Mihomo rule-providers](https://wiki.metacubex.one/config/rule-providers/)。

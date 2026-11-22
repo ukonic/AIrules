@@ -1,6 +1,9 @@
 const AI_GROUP = "🤖 AI";
 const US_GROUP = "🇺🇸 美国节点";
 
+// 按显示顺序填写完整组名。未列出的组按原有顺序排在后面。
+const PROXY_GROUP_ORDER = [AI_GROUP, US_GROUP];
+
 const US_NODE_FILTER =
   "(?i)美国|美國|美西|美东|美東|🇺🇸|(^|[^a-z0-9])(?:USA?[0-9]*|United[ _-]+States|Los[ _-]+Angeles|San[ _-]+Jose|Seattle|New[ _-]+York)(?=$|[^a-z0-9])";
 const NOTICE_FILTER =
@@ -30,11 +33,18 @@ function updateProxyGroups(config) {
   const otherGroups = (config["proxy-groups"] || []).filter(
     group => group.name !== AI_GROUP && group.name !== US_GROUP
   );
-  return [
+  const groups = [
     { name: AI_GROUP, type: "select", proxies: [US_GROUP] },
     usGroup,
     ...otherGroups,
   ];
+  const positions = new Map(
+    Array.from(new Set(PROXY_GROUP_ORDER), (name, index) => [name, index])
+  );
+  return groups.sort((a, b) =>
+    (positions.get(a.name) ?? positions.size) -
+    (positions.get(b.name) ?? positions.size)
+  );
 }
 
 function registerRuleProvider(providers, source, url) {
