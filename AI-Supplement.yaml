@@ -5,6 +5,7 @@ payload:
   - 'DOMAIN,servd-anthropic-website.b-cdn.net'
   - 'DOMAIN,aistudio.google.com'
   - 'DOMAIN,cloudcode-pa.googleapis.com'
+  - 'DOMAIN,robinfrontend-pa.googleapis.com'
   - 'DOMAIN-SUFFIX,muse.ai'
   - 'DOMAIN,hatch-api.meta.ai'
   - 'DOMAIN,graph.meta.ai'

@@ -12,6 +12,7 @@ HOST,servd-anthropic-website.b-cdn.net,AI专用
 # Gemini
 HOST,aistudio.google.com,AI专用
 HOST,cloudcode-pa.googleapis.com,AI专用
+HOST,robinfrontend-pa.googleapis.com,AI专用
 
 # Muse
 HOST-SUFFIX,muse.ai,AI专用
