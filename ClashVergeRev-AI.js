@@ -3,7 +3,21 @@ const US_GROUP = "🇺🇸 美国节点";
 const GOOGLE_GROUP = "🔍 Google";
 
 // 按显示顺序填写完整组名。未列出的组按原有顺序排在后面。
-const PROXY_GROUP_ORDER = [AI_GROUP, US_GROUP];
+const PROXY_GROUP_ORDER = [
+  "🔰 手动选择",
+  AI_GROUP,
+  US_GROUP,
+  GOOGLE_GROUP,
+  "🎥 Netflix",
+  "🌍 主流媒体",
+  "Ⓜ️ Microsoft",
+  "📲 Telegram",
+  "🍎 Apple",
+  "📺 BiliBili",
+  "🎯 Direct",
+  "🛑 Block",
+  "🐟 漏网之鱼",
+];
 
 const US_NODE_FILTER =
   "(?i)美国|美國|美西|美东|美東|🇺🇸|(^|[^a-z0-9])(?:USA?[0-9]*|United[ _-]+States|Los[ _-]+Angeles|San[ _-]+Jose|Seattle|New[ _-]+York)(?=$|[^a-z0-9])";
