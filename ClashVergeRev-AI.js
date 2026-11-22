@@ -27,22 +27,14 @@ function updateProxyGroups(config) {
     "exclude-type": "Direct|Compatible|Dns|Reject|RejectDrop|Pass|PassRule",
     "empty-fallback": "REJECT",
   };
-  const managedGroups = new Map([
-    [AI_GROUP, { name: AI_GROUP, type: "select", proxies: [US_GROUP] }],
-    [US_GROUP, usGroup],
-  ]);
-
-  // Preserve the position of the first occurrence and remove duplicate managed groups.
-  const groups = [];
-  for (const group of config["proxy-groups"] || []) {
-    if (group.name !== AI_GROUP && group.name !== US_GROUP) {
-      groups.push(group);
-    } else if (managedGroups.has(group.name)) {
-      groups.push(managedGroups.get(group.name));
-      managedGroups.delete(group.name);
-    }
-  }
-  return groups.concat(Array.from(managedGroups.values()));
+  const otherGroups = (config["proxy-groups"] || []).filter(
+    group => group.name !== AI_GROUP && group.name !== US_GROUP
+  );
+  return [
+    { name: AI_GROUP, type: "select", proxies: [US_GROUP] },
+    usGroup,
+    ...otherGroups,
+  ];
 }
 
 function registerRuleProvider(providers, source, url) {

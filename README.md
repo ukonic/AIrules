@@ -8,7 +8,7 @@
 
 1. 在 Clash Verge Rev 的「订阅」页导入并选中机场订阅。
 2. 右键目标订阅，打开「编辑扩展脚本」或「扩展脚本」，粘贴 Raw 页面中的完整脚本并保存。要应用到所有订阅，可粘贴到「全局扩展脚本」。
-3. 刷新或重新选中该订阅。切换到「规则」模式，在「代理」页确认出现 `🤖 AI` 和 `🇺🇸 美国节点`。
+3. 刷新或重新选中该订阅。切换到「规则」模式，在「代理」页确认列表开头依次显示 `🤖 AI` 和 `🇺🇸 美国节点`。
 4. 在「代理」页展开 `🇺🇸 美国节点`，点选要使用的节点。规则提供者的下载状态可在规则页或内核日志中查看。
 
 ## 分流架构
@@ -36,6 +36,6 @@ Mihomo 从订阅内联节点和 `proxy-providers` 中筛选候选，订阅刷新
 | Gemini | [blackmatrix7 / Gemini.yaml](https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml) |
 | AI-Supplement | [ukonic / AI-Supplement.yaml](https://raw.githubusercontent.com/ukonic/AIrules/main/AI-Supplement.yaml) |
 
-规则提供者使用 `AIrules-` 前缀，遇到不同内容的同名提供者时会选用带编号的名称。脚本会在原位置更新两个同名策略组，并保留原有 DNS、节点、其他策略组、规则提供者及其他规则的相对顺序。若代理节点或代理提供者占用了这两个策略组名称，脚本会报错，避免输出有命名冲突的配置。
+规则提供者使用 `AIrules-` 前缀，遇到不同内容的同名提供者时会选用带编号的名称。脚本将两个 AI 相关策略组放在列表最前面，其余策略组保持原有顺序。若代理节点或代理提供者占用了这两个策略组名称，脚本会报错，避免输出有命名冲突的配置。
 
 参考 [Clash Verge Rev 自定义脚本文档](https://www.clashverge.dev/guide/script.html)、[Mihomo 代理组通用字段](https://wiki.metacubex.one/config/proxy-groups/)、[Mihomo select](https://wiki.metacubex.one/config/proxy-groups/select/)和 [Mihomo rule-providers](https://wiki.metacubex.one/config/rule-providers/)。
