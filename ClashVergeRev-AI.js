@@ -1,5 +1,6 @@
 const AI_GROUP = "🤖 AI";
 const US_GROUP = "🇺🇸 美国节点";
+const GOOGLE_GROUP = "🔍 Google";
 
 // 按显示顺序填写完整组名。未列出的组按原有顺序排在后面。
 const PROXY_GROUP_ORDER = [AI_GROUP, US_GROUP];
@@ -30,9 +31,14 @@ function updateProxyGroups(config) {
     "exclude-type": "Direct|Compatible|Dns|Reject|RejectDrop|Pass|PassRule",
     "empty-fallback": "REJECT",
   };
-  const otherGroups = (config["proxy-groups"] || []).filter(
-    group => group.name !== AI_GROUP && group.name !== US_GROUP
-  );
+  const otherGroups = (config["proxy-groups"] || [])
+    .filter(group => group.name !== AI_GROUP && group.name !== US_GROUP)
+    .map(group => {
+      if (group.name !== GOOGLE_GROUP || group.type !== "select") return group;
+      const members = group.proxies || [];
+      if (members.includes(US_GROUP)) return group;
+      return { ...group, proxies: [...members, US_GROUP] };
+    });
   const groups = [
     { name: AI_GROUP, type: "select", proxies: [US_GROUP] },
     usGroup,
